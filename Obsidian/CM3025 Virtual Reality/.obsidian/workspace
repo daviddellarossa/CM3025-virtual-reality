@@ -1,13 +1,13 @@
 {
   "main": {
-    "id": "b6844d05bdcda9b5",
+    "id": "a66f59f91907be9a",
     "type": "split",
     "children": [
       {
-        "id": "c5cd877f7a231ae7",
+        "id": "312cc2e7b44141a6",
         "type": "leaf",
         "state": {
-          "type": "empty",
+          "type": "graph",
           "state": {}
         }
       }
@@ -82,6 +82,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "c5cd877f7a231ae7",
-  "lastOpenFiles": []
+  "active": "312cc2e7b44141a6",
+  "lastOpenFiles": [
+    "Gameplay sub/Therapy tool.md",
+    "Gameplay sub/Learning tool.md",
+    "Gameplay sub/Game.md",
+    "Gameplay sub/Game modes.md",
+    "Game world sub/Levels in learning mode.md",
+    "Game world sub/Levels in game mode.md",
+    "Game world sub/General look and feel.md",
+    "Game overview sub/Background.md",
+    "Game overview sub/Target audience.md",
+    "Game overview sub/Game concept.md"
+  ]
 }
