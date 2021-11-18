@@ -1,14 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-namespace SimonVR.Assets.Scripts.GameManager.StateMachine
+namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
 {
     public abstract class State
     {
         public abstract event EventHandler<State> ChangeStateRequestEvent;
-        public GameManager GameManager { get; protected set; }
+        public GameManagement.GameManager GameManager { get; protected set; }
 
-        public State(GameManager gameManager)
+        public State(GameManagement.GameManager gameManager)
         {
             this.GameManager = gameManager;
         }
