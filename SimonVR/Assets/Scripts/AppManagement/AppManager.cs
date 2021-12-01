@@ -14,13 +14,7 @@ namespace SimonVR.Assets.Scripts.AppManagement
             ChangeStateRequestEventHandler(this, new MenuState(this));
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        private void ChangeStateRequestEventHandler(object sender, State e)
+        protected void ChangeStateRequestEventHandler(object sender, State e)
         {
             //Debug.Log($"Changing state from {sender} to {e}");
             if (CurrentState != null)
