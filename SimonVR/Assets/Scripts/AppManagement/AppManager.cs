@@ -1,10 +1,10 @@
 using Codice.CM.Common;
-using SimonVR.Assets.Scripts.GameManager.StateMachine;
+using SimonVR.Assets.Scripts.AppManagement.StateMachine;
 using UnityEngine;
 
-namespace SimonVR.Assets.Scripts.GameManager
+namespace SimonVR.Assets.Scripts.AppManagement
 {
-    public class GameManager : MonoBehaviour
+    public class AppManager : MonoBehaviour
     {
         public State CurrentState { get; private set; }
 
@@ -17,7 +17,7 @@ namespace SimonVR.Assets.Scripts.GameManager
         // Update is called once per frame
         void Update()
         {
-        
+
         }
 
         private void ChangeStateRequestEventHandler(object sender, State e)

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimonVR.Assets.Scripts.GameManager.StateMachine
+namespace SimonVR.Assets.Scripts.AppManagement.StateMachine
 {
-    public class GameOverState : State
+    public class PlayState : State
     {
-        public GameOverState(GameManager gameManager) : base(gameManager)
+        public PlayState(AppManager gameManager) : base(gameManager)
         { }
 
         public override event EventHandler<State> ChangeStateRequestEvent;
