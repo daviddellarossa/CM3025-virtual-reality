@@ -1,10 +1,10 @@
 using Codice.CM.Common;
-using SimonVR.Assets.Scripts.GameManager.StateMachine;
+using SimonVR.Assets.Scripts.AppManagement.StateMachine;
 using UnityEngine;
 
-namespace SimonVR.Assets.Scripts.GameManager
+namespace SimonVR.Assets.Scripts.AppManagement
 {
-    public class GameManager : MonoBehaviour
+    public class AppManager : MonoBehaviour
     {
         public State CurrentState { get; private set; }
 
@@ -14,13 +14,7 @@ namespace SimonVR.Assets.Scripts.GameManager
             ChangeStateRequestEventHandler(this, new MenuState(this));
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
-        private void ChangeStateRequestEventHandler(object sender, State e)
+        protected void ChangeStateRequestEventHandler(object sender, State e)
         {
             //Debug.Log($"Changing state from {sender} to {e}");
             if (CurrentState != null)
