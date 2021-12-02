@@ -13,5 +13,12 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public WaitForStart(GameManager gameManager) : base(gameManager)
         {
         }
+
+        public override void OnRightTriggerPressed()
+        {
+            base.OnRightTriggerPressed();
+
+            ChangeStateRequestEvent?.Invoke(this, new Play(GameManager));
+        }
     }
 }

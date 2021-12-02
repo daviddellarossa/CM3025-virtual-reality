@@ -1,7 +1,9 @@
 {
     "name": "SimonVR",
     "rootNamespace": "SimonVR",
-    "references": [],
+    "references": [
+        "GUID:1fbf338ef6b952a448262a7ff7df5fe4"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

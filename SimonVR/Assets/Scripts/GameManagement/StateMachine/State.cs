@@ -26,5 +26,10 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         {
             Debug.Log($"Exiting { GetType().Name} state");
         }
+
+        public virtual void OnRightTriggerPressed()
+        {
+            Debug.Log("Right Trigger pressed");
+        }
     }
 }
