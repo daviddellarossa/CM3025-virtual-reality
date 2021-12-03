@@ -10,10 +10,22 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     {
         public override event EventHandler<State> ChangeStateRequestEvent;
         public PlaySubState CurrentState { get; protected set; }
+        public SequenceGenerator SequenceGenerator { get; protected set; }
+
+        public uint CurrentLevel { get; protected set; }
 
         public Play(GameManager gameManager) : base(gameManager)
         {
-            ChangeStateRequestEventHandler(this, new Playback(gameManager));
+            //TODO: Automate MaxValue
+            SequenceGenerator = new SequenceGenerator(4, 1, 0);
+            CurrentLevel = 1;
+
+        }
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            ChangeStateRequestEventHandler(this, new Playback(this, CurrentLevel));
         }
 
         protected void ChangeStateRequestEventHandler(object sender, PlaySubState state)

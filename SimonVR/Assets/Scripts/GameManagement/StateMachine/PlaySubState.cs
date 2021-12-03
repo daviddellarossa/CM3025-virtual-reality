@@ -11,12 +11,17 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     {
         public abstract event EventHandler<PlaySubState> ChangeStateRequestEvent;
 
-        public GameManager GameManager { get; set; }
+        //public GameManager GameManager { get; set; }
+        public Play ParentState { get; protected set; }
 
-        public PlaySubState(GameManager gameManager)
+        public uint Level { get; set; }
+
+        public PlaySubState(Play parentState, uint level)
         {
-            GameManager = gameManager;
+            ParentState = parentState;
+            Level = level;
         }
+
         public virtual void OnEnter()
         {
             Debug.Log($"Entering { GetType().Name} state");

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
 {
-    public class Feedback : PlaySubState
+    public class CorrectAnswer : PlaySubState
     {
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
 
-        public Feedback(GameManager gameManager) : base(gameManager)
+        public CorrectAnswer(Play parentState, uint level) : base(parentState, level)
         {
         }
 

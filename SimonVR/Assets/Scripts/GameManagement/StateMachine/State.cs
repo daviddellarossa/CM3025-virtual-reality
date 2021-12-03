@@ -31,5 +31,6 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         {
             Debug.Log("Right Trigger pressed");
         }
+
     }
 }
