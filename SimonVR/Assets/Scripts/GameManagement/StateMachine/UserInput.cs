@@ -15,5 +15,9 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         {
             this.Sequence = sequence;
         }
+        public override void OnEnter()
+        {
+            base.OnEnter();
+        }
     }
 }
