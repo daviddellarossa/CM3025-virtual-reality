@@ -9,13 +9,49 @@ namespace SimonVR.Assets.Scripts.GameManagement
 {
     public class ConsoleManager : MonoBehaviour
     {
-        public void SwitchButtonOn(uint buttonId)
+        private Button[] buttonsCollection;
+
+        public event Action<Button> ButtonDownEvent;
+        public event Action<Button> ButtonUpEvent;
+
+        public void SetActive(bool isActive)
         {
-            throw new NotImplementedException();
+            foreach(var button in buttonsCollection)
+            {
+                button.SetActive(isActive);
+            }
         }
-        public void SwitchButtonOff(uint buttonId)
+
+        private void Awake()
         {
-            throw new NotImplementedException();
+            var buttons = GetComponentsInChildren<Button>();
+            buttonsCollection = buttons.OrderBy(x => x.ButtonId).ToArray();
+        }
+
+        private void Start()
+        {
+            //var buttons = GetComponentsInChildren<Button>();
+            //buttonsCollection = buttons.OrderBy(x => x.ButtonId).ToArray();
+
+            foreach(var button in buttonsCollection)
+            {
+                button.ButtonUpEvent += Button_ButtonUpEvent;
+                button.ButtonDownEvent += Button_ButtonDownEvent;
+            }
+
+            SetActive(false);
+        }
+
+        
+
+        private void Button_ButtonDownEvent(Button button)
+        {
+            ButtonDownEvent?.Invoke(button);
+        }
+
+        private void Button_ButtonUpEvent(Button button)
+        {
+            ButtonUpEvent?.Invoke(button);
         }
     }
 }

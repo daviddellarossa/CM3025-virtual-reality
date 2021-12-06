@@ -18,6 +18,13 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public override void OnEnter()
         {
             base.OnEnter();
+            ParentState.GameManager.ConsoleManager.SetActive(true);
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            ParentState.GameManager.ConsoleManager.SetActive(false);
         }
     }
 }

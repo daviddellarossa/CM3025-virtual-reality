@@ -14,6 +14,11 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         {
         }
 
+        public override void OnEnter()
+        {
+            base.OnEnter();
+        }
+
         public override void OnRightTriggerPressed()
         {
             base.OnRightTriggerPressed();

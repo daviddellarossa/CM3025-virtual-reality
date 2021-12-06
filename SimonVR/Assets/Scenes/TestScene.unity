@@ -361,7 +361,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 47987502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0fb31294f1ffd84bbf759443bf26c2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 52a466acd1b2d32448845756d1aa501f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &122169084
@@ -524,6 +524,7 @@ MonoBehaviour:
   materialOff: {fileID: 2100000, guid: 032ecb1152daae64c8fdbbd697d4ea7d, type: 2}
   materialOn: {fileID: 2100000, guid: b412fb900be29734e865e38db255b4ba, type: 2}
   ButtonId: 0
+  IsButtonActive: 0
 --- !u!1 &176462795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5544,6 +5545,7 @@ MonoBehaviour:
   materialOff: {fileID: 2100000, guid: 52f876d8394c27d419b09ebedd8a8db2, type: 2}
   materialOn: {fileID: 2100000, guid: c3aaa871be3f0334db2652a3a00bdceb, type: 2}
   ButtonId: 1
+  IsButtonActive: 0
 --- !u!1 &1631153720
 GameObject:
   m_ObjectHideFlags: 0
@@ -5659,6 +5661,7 @@ MonoBehaviour:
   materialOff: {fileID: 2100000, guid: 609f0dde274ad9a49a71a5289d691a41, type: 2}
   materialOn: {fileID: 2100000, guid: ddf42f46834ffcc45b4e83f3120ce25e, type: 2}
   ButtonId: 3
+  IsButtonActive: 0
 --- !u!1 &1701687969
 GameObject:
   m_ObjectHideFlags: 0
@@ -6315,11 +6318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6831214072783635546, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831214072783635546, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831214072783635546, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6331,11 +6334,11 @@ PrefabInstance:
       objectReference: {fileID: 2136260418}
     - target: {fileID: 6831214072783635546, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TurnOff
+      value: OnButtonUp
       objectReference: {fileID: 0}
     - target: {fileID: 6831214072783635546, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TurnOn
+      value: OnButtonDown
       objectReference: {fileID: 0}
     - target: {fileID: 6831214072783635546, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -6344,6 +6347,14 @@ PrefabInstance:
     - target: {fileID: 6831214072783635546, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SimonVR.Assets.Scripts.GameManagement.Button, SimonVR
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831214072790689916, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
+      propertyPath: highlightOnHover
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831214072874924571, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
+      propertyPath: highlightOnHover
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073080495990, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: engageAtPercent
@@ -6377,6 +6388,10 @@ PrefabInstance:
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SimonVR.Assets.Scripts.GameManagement.Button, SimonVR
       objectReference: {fileID: 0}
+    - target: {fileID: 6831214073481108314, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
+      propertyPath: highlightOnHover
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6831214073502250876, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: engageAtPercent
       value: 0.85
@@ -6387,11 +6402,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073502250876, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073502250876, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073502250876, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6403,11 +6418,11 @@ PrefabInstance:
       objectReference: {fileID: 1607335070}
     - target: {fileID: 6831214073502250876, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TurnOff
+      value: OnButtonUp
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073502250876, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TurnOn
+      value: OnButtonDown
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073502250876, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -6427,11 +6442,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073519891739, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073519891739, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073519891739, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6443,11 +6458,11 @@ PrefabInstance:
       objectReference: {fileID: 1683531270}
     - target: {fileID: 6831214073519891739, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TurnOff
+      value: OnButtonUp
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073519891739, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TurnOn
+      value: OnButtonDown
       objectReference: {fileID: 0}
     - target: {fileID: 6831214073519891739, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -6456,6 +6471,10 @@ PrefabInstance:
     - target: {fileID: 6831214073519891739, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SimonVR.Assets.Scripts.GameManagement.Button, SimonVR
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831214073708421238, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
+      propertyPath: highlightOnHover
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6848265335731818350, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6473,11 +6492,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 52f876d8394c27d419b09ebedd8a8db2, type: 2}
-    m_RemovedComponents:
-    - {fileID: 6831214073833572274, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
-    - {fileID: 6831214072871210936, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
-    - {fileID: 6831214073523764382, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
-    - {fileID: 6831214072788032991, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4c2b37d03f6f35418cb22aa6094c5d8, type: 3}
 --- !u!4 &1933390121 stripped
 Transform:
@@ -6838,6 +6853,7 @@ MonoBehaviour:
   materialOff: {fileID: 2100000, guid: 827f76fe701f3e6459f800e8113a2d58, type: 2}
   materialOn: {fileID: 2100000, guid: f415641726705e14b8355b5be33b502e, type: 2}
   ButtonId: 2
+  IsButtonActive: 0
 --- !u!1001 &7507614554256153088
 PrefabInstance:
   m_ObjectHideFlags: 0

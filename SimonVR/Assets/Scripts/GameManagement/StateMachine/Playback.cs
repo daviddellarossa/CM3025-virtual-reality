@@ -20,6 +20,8 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
             base.OnEnter();
             var sequence = ParentState.SequenceGenerator.GetSequence(Level);
 
+            //ParentState.GameManager.ConsoleManager.SetActive(false);
+
             ParentState.GameManager.StartCoroutine(StartPlayIteration(sequence));
         }
 

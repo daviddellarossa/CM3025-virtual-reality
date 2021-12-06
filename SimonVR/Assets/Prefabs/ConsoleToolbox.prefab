@@ -185,7 +185,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7596587809348632659, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596587809348632659, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
+      propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7596587808734230679, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
 --- !u!4 &6869799867440952466 stripped
 Transform:
@@ -247,7 +256,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7596587809348632659, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596587809348632659, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
+      propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7596587808734230679, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
 --- !u!4 &6869799867558569717 stripped
 Transform:
@@ -309,7 +327,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7596587809348632659, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596587809348632659, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
+      propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7596587808734230679, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
 --- !u!4 &6869799867050065048 stripped
 Transform:
@@ -371,7 +398,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7596587809348632659, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596587809348632659, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
+      propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7596587808734230679, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 81f055d098779404083bbcb3502c7a2e, type: 3}
 --- !u!4 &6869799866822608820 stripped
 Transform:

@@ -16,23 +16,39 @@ namespace SimonVR.Assets.Scripts.GameManagement
         private Material materialOn;
 
         private Renderer renderer;
+        private Interactable interactable;
 
         public int ButtonId;
+        public bool IsButtonActive;
 
-        private void Start()
+        public event Action<Button> ButtonDownEvent;
+        public event Action<Button> ButtonUpEvent;
+
+        public void SetActive(bool isActive)
+        {
+            IsButtonActive = isActive;
+            interactable.highlightOnHover = isActive;
+        }
+
+        private void Awake()
         {
             renderer = GetComponentInChildren<Renderer>();
+            interactable = GetComponent<Interactable>();
         }
 
         public void OnButtonDown(Hand fromHand)
         {
+            if (!IsButtonActive) return;
             TurnOn();
             fromHand.TriggerHapticPulse(1000);
+            ButtonDownEvent?.Invoke(this);
         }
 
         public void OnButtonUp(Hand fromHand)
         {
+            if(!IsButtonActive) return;
             TurnOff();
+            ButtonUpEvent?.Invoke(this);
         }
 
 
