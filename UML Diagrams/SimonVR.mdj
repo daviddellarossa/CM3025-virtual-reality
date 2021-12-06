@@ -12740,9 +12740,9 @@
 																"$ref": "AAAAAAF9jwtbM2Fsx1c="
 															},
 															"font": "Arial;13;0",
-															"left": 1172,
+															"left": 1148,
 															"top": 290,
-															"width": 46.22998046875,
+															"width": 94.65625,
 															"height": 13,
 															"alpha": 3.836331134257436,
 															"distance": 39.05124837953327,
@@ -12750,7 +12750,7 @@
 																"$ref": "AAAAAAF9jwtbNGFt5V0="
 															},
 															"edgePosition": 1,
-															"text": "OnError"
+															"text": "OnExitPlayState"
 														},
 														{
 															"_type": "EdgeLabelView",
@@ -13218,7 +13218,7 @@
 															"_parent": {
 																"$ref": "AAAAAAF9jwtbM2Fsx1c="
 															},
-															"name": "OnError"
+															"name": "OnExitPlayState"
 														}
 													]
 												},
