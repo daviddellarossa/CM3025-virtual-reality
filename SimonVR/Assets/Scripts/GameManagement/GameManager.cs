@@ -8,13 +8,24 @@ namespace SimonVR.Assets.Scripts.GameManagement
 {
     public class GameManager : MonoBehaviour
     {
-        public State CurrentState { get; set; }
+        [SerializeField]
+        private GameObject console;
+        [SerializeField]
+        private GameObject displayPanels;
+        [SerializeField]
+        private GameObject soundManager;
+
+        public PanelsManager PanelsManager { get; protected set; }
+        public ConsoleManager ConsoleManager { get; protected set; }
+        public SoundManager SoundManager { get; protected set; }
+
+        public State CurrentState { get; protected set; }
         private SteamVR_Behaviour_Boolean steamVR_Behaviour_Boolean;
         private IDictionary<SourceActionDelegateKey, Action<SourceActionDelegateKey>> sourceActionDelegates = new Dictionary<SourceActionDelegateKey, Action<SourceActionDelegateKey>>()
-        { 
+        {
+
+        };
             
-        }
-            ;
         private void Awake()
         {
             sourceActionDelegates.Add(new SourceActionDelegateKey(SteamVR_Input_Sources.RightHand, "/actions/default/in/InteractUI"), OnRightTriggerPressed);
@@ -22,9 +33,14 @@ namespace SimonVR.Assets.Scripts.GameManagement
 
         void Start()
         {
-            ChangeStateRequestEventHandler(this, new WaitForStart(this));
+            PanelsManager = displayPanels.GetComponent<PanelsManager>();
+            ConsoleManager = console.GetComponent<ConsoleManager>();
+            SoundManager = soundManager.GetComponent<SoundManager>();
+
             var steamVR_Behaviour_Boolean = GetComponent<SteamVR_Behaviour_Boolean>();
             steamVR_Behaviour_Boolean.onPressUpEvent += SteamVR_Behaviour_Boolean_onPressUpEvent;
+
+            ChangeStateRequestEventHandler(this, new WaitForStart(this));
         }
         private void SteamVR_Behaviour_Boolean_onPressUpEvent(SteamVR_Behaviour_Boolean fromAction, SteamVR_Input_Sources fromSource)
         {

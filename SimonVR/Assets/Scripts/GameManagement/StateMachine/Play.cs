@@ -10,10 +10,22 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     {
         public override event EventHandler<State> ChangeStateRequestEvent;
         public PlaySubState CurrentState { get; protected set; }
+        public SequenceGenerator SequenceGenerator { get; protected set; }
+
+        public int CurrentLevel { get; protected set; }
 
         public Play(GameManager gameManager) : base(gameManager)
         {
-            ChangeStateRequestEventHandler(this, new Playback(gameManager));
+            //TODO: Automate MaxValue
+            SequenceGenerator = new SequenceGenerator(maxValue: 4, duration: 1, minValue: 0, finalPad: 0.4f);
+            CurrentLevel = 1;
+
+        }
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            ChangeStateRequestEventHandler(this, new Playback(this, CurrentLevel));
         }
 
         protected void ChangeStateRequestEventHandler(object sender, PlaySubState state)
@@ -21,11 +33,18 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
             if (CurrentState != null)
             {
                 CurrentState.ChangeStateRequestEvent -= ChangeStateRequestEventHandler;
+                CurrentState.ExitPlayStateEvent -= ExitPlayStateEventHandler;
                 CurrentState.OnExit();
             }
             CurrentState = state;
             CurrentState.ChangeStateRequestEvent += ChangeStateRequestEventHandler;
+            CurrentState.ExitPlayStateEvent += ExitPlayStateEventHandler;
             CurrentState.OnEnter();
+        }
+
+        private void ExitPlayStateEventHandler(object sender, EventArgs e)
+        {
+            ChangeStateRequestEvent?.Invoke(this, new WaitForStart(this.GameManager));
         }
     }
 }
