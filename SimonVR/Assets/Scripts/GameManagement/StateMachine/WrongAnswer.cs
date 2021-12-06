@@ -10,7 +10,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     {
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
 
-        public WrongAnswer(Play parentState, uint level) : base(parentState, level)
+        public WrongAnswer(Play parentState, int level) : base(parentState, level)
         {
         }
     }

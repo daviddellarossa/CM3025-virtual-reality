@@ -16,7 +16,7 @@ namespace SimonVR.Assets.Scripts.GameManagement
 
         private Renderer renderer;
 
-        public uint PanelId { get; set; }
+        public int PanelId;
 
         private void Start()
         {

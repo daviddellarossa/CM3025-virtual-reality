@@ -12,12 +12,12 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public PlaySubState CurrentState { get; protected set; }
         public SequenceGenerator SequenceGenerator { get; protected set; }
 
-        public uint CurrentLevel { get; protected set; }
+        public int CurrentLevel { get; protected set; }
 
         public Play(GameManager gameManager) : base(gameManager)
         {
             //TODO: Automate MaxValue
-            SequenceGenerator = new SequenceGenerator(4, 1, 0);
+            SequenceGenerator = new SequenceGenerator(maxValue: 4, duration: 1, minValue: 0, finalPad: 0.4f);
             CurrentLevel = 1;
 
         }

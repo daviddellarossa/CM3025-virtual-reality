@@ -11,8 +11,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     public class Playback : PlaySubState
     {
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
-
-        public Playback(Play parentState, uint level) : base(parentState, level)
+        public Playback(Play parentState, int level) : base(parentState, level)
         {
         }
 
@@ -39,7 +38,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
 
                 yield return new WaitForSeconds(sequence[i].Duration);
 
-                ParentState.GameManager.PanelsManager.SwitchPanelOff(i);
+                ParentState.GameManager.PanelsManager.SwitchPanelOff(sequence[i].Value);
 
                 if (sequence[i].FinalPad > 0)
                 {
@@ -47,6 +46,8 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
                 }
             }
             yield return null;
+
+            ChangeStateRequestEvent?.Invoke(this, new UserInput(this.ParentState, Level, sequence));
         }
     }
 }

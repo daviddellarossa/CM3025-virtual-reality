@@ -10,8 +10,10 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     {
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
 
-        public UserInput(Play parentState, uint level) : base(parentState, level)
+        public Sequence Sequence {  get; protected set; }
+        public UserInput(Play parentState, int level, Sequence sequence) : base(parentState, level)
         {
+            this.Sequence = sequence;
         }
     }
 }
