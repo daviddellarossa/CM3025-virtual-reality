@@ -9,9 +9,16 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     public class WrongAnswer : PlaySubState
     {
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
+        public override event EventHandler ExitPlayStateEvent;
 
         public WrongAnswer(Play parentState, int level) : base(parentState, level)
         {
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            ExitPlayStateEvent?.Invoke(this, new EventArgs());
         }
     }
 }

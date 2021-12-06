@@ -11,6 +11,8 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     public class Playback : PlaySubState
     {
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
+        public override event EventHandler ExitPlayStateEvent;
+
         public Playback(Play parentState, int level) : base(parentState, level)
         {
         }

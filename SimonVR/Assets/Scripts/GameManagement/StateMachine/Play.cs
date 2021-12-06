@@ -33,11 +33,18 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
             if (CurrentState != null)
             {
                 CurrentState.ChangeStateRequestEvent -= ChangeStateRequestEventHandler;
+                CurrentState.ExitPlayStateEvent -= ExitPlayStateEventHandler;
                 CurrentState.OnExit();
             }
             CurrentState = state;
             CurrentState.ChangeStateRequestEvent += ChangeStateRequestEventHandler;
+            CurrentState.ExitPlayStateEvent += ExitPlayStateEventHandler;
             CurrentState.OnEnter();
+        }
+
+        private void ExitPlayStateEventHandler(object sender, EventArgs e)
+        {
+            ChangeStateRequestEvent?.Invoke(this, new WaitForStart(this.GameManager));
         }
     }
 }

@@ -10,6 +10,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
     public abstract class PlaySubState
     {
         public abstract event EventHandler<PlaySubState> ChangeStateRequestEvent;
+        public abstract event EventHandler ExitPlayStateEvent;
 
         public Play ParentState { get; protected set; }
 
