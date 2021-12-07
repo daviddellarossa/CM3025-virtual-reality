@@ -15,21 +15,26 @@ namespace SimonVR.Assets.Scripts.GameManagement
         private Material materialOn;
 
         private Renderer renderer;
+        private AudioSource audioSource;
 
         public int PanelId;
 
-        private void Start()
+        private void Awake()
         {
             renderer = GetComponent<Renderer>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void TurnOn()
         {
             renderer.material = materialOn;
+            audioSource.Play();
+
         }
         public void TurnOff()
         {
             renderer.material = materialOff;
+            audioSource.Stop();
         }
     }
 }

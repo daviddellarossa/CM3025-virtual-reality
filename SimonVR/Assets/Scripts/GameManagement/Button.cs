@@ -17,6 +17,7 @@ namespace SimonVR.Assets.Scripts.GameManagement
 
         private Renderer renderer;
         private Interactable interactable;
+        private AudioSource audioSource;
 
         public int ButtonId;
         public bool IsButtonActive;
@@ -34,6 +35,7 @@ namespace SimonVR.Assets.Scripts.GameManagement
         {
             renderer = GetComponentInChildren<Renderer>();
             interactable = GetComponent<Interactable>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void OnButtonDown(Hand fromHand)
@@ -55,10 +57,12 @@ namespace SimonVR.Assets.Scripts.GameManagement
         public void TurnOn()
         {
             renderer.material = materialOn;
+            audioSource.Play();
         }
         public void TurnOff()
         {
             renderer.material = materialOff;
+            audioSource.Stop();
         }
 
     }
