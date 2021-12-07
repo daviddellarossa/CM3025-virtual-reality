@@ -13,6 +13,8 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
         public override event EventHandler ExitPlayStateEvent;
 
+        public virtual float ChangeStateDelay { get; set; } = 0f;
+
         public Playback(Play parentState, int level) : base(parentState, level)
         {
         }
@@ -51,7 +53,17 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
             }
             yield return null;
 
-            ChangeStateRequestEvent?.Invoke(this, new UserInput(this.ParentState, Level, sequence));
+           this.ParentState.GameManager.StartCoroutine(CoChangeState(new UserInput(this.ParentState, Level, sequence)));
+        }
+
+        protected IEnumerator CoChangeState(PlaySubState state)
+        {
+            if(ChangeStateDelay > 0)
+            {
+                yield return new WaitForSeconds(ChangeStateDelay);
+            }
+
+            ChangeStateRequestEvent?.Invoke(this, state);
         }
     }
 }
