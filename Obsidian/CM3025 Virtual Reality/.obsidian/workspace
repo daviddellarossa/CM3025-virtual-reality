@@ -84,6 +84,7 @@
   },
   "active": "312cc2e7b44141a6",
   "lastOpenFiles": [
+    "User interface.md",
     "User interface sub/Help system.md",
     "User interface sub/Control system.md",
     "User interface sub/Game art.md",
@@ -92,7 +93,6 @@
     "User interface sub/Audio, music, sound effects.md",
     "User interface sub/HUD.md",
     "User interface sub/Visual system.md",
-    "User interface.md",
     "Gameplay sub/Therapy tool.md"
   ]
 }

@@ -22,6 +22,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public override void OnEnter()
         {
             base.OnEnter();
+            this.ParentState.GameManager.ScoreManager.AddToScore(1);
             this.ParentState.GameManager.StartCoroutine(CoChangeState(new Playback(ParentState, ++Level)));
         }
 
