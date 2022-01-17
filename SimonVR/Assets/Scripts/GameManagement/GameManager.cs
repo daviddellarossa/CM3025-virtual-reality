@@ -1,4 +1,5 @@
 ﻿using SimonVR.Assets.Scripts.GameManagement.StateMachine;
+using SimonVR.Assets.Scripts.ScoreManagement;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace SimonVR.Assets.Scripts.GameManagement
         public PanelsManager PanelsManager { get; protected set; }
         public ConsoleManager ConsoleManager { get; protected set; }
         public SoundManager SoundManager { get; protected set; }
+        public ScoreManager ScoreManager { get; protected set; }
 
         public State CurrentState { get; protected set; }
         private SteamVR_Behaviour_Boolean steamVR_Behaviour_Boolean;
@@ -36,6 +38,7 @@ namespace SimonVR.Assets.Scripts.GameManagement
             PanelsManager = displayPanels.GetComponent<PanelsManager>();
             ConsoleManager = console.GetComponent<ConsoleManager>();
             SoundManager = soundManager.GetComponent<SoundManager>();
+            ScoreManager = GetComponent<ScoreManager>();
 
             var steamVR_Behaviour_Boolean = GetComponent<SteamVR_Behaviour_Boolean>();
             steamVR_Behaviour_Boolean.onPressUpEvent += SteamVR_Behaviour_Boolean_onPressUpEvent;

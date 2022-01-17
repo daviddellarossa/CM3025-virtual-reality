@@ -25,7 +25,15 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         {
             base.OnEnter();
 
+            this.GameManager.ScoreManager.ResetCurrentScore();
+
             ChangeStateRequestEventHandler(this, new Playback(this, CurrentLevel));
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
+
+            this.GameManager.ScoreManager.AddToHighScore();
         }
 
         protected void ChangeStateRequestEventHandler(object sender, PlaySubState state)
