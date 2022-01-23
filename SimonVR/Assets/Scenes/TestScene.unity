@@ -3240,7 +3240,7 @@ GameObject:
   - component: {fileID: 899393219}
   - component: {fileID: 899393218}
   m_Layer: 0
-  m_Name: HighScoreValue
+  m_Name: HighScoreValues
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3348,7 +3348,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 53.64503, y: 0, z: 5.7970734, w: -27.03161}
+  m_margin: {x: 53.64503, y: 0, z: 5.7970734, w: -74.94096}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6072,6 +6072,9 @@ MonoBehaviour:
   HighScores: {fileID: 11400000, guid: 33f51c836137c9c48991633ce128faf7, type: 2}
   HighScoreDisplayGO: {fileID: 1672249372}
   ScoreDisplayGO: {fileID: 1545575351}
+  HighScoreListNamesGO: {fileID: 1681636728}
+  HighScoreListValuesGO: {fileID: 899393216}
+  HighScoreListLength: 6
 --- !u!1 &1477037010
 GameObject:
   m_ObjectHideFlags: 0
@@ -7366,7 +7369,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 53.64503, y: 0, z: -0.05728526, w: -26.33307}
+  m_margin: {x: 53.64503, y: 0, z: -0.05728526, w: -75.1869}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

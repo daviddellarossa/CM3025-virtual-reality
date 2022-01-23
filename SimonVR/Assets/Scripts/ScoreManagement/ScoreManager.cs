@@ -18,15 +18,27 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
         [SerializeField]
         private GameObject ScoreDisplayGO;
 
+        [SerializeField]
+        private GameObject HighScoreListNamesGO;
+        [SerializeField]
+        private GameObject HighScoreListValuesGO;
+
         private TextMeshProUGUI ScoreDisplay;
         private TextMeshProUGUI HighScoreDisplay;
+        private TextMeshProUGUI HighScoreListNames;
+        private TextMeshProUGUI HighScoreListValues;
 
+        [SerializeField] 
+        [Range(1, 10)]
+        private int HighScoreListLength = 5;
         
 
         void Start()
         {
             ScoreDisplay = ScoreDisplayGO.GetComponent<TextMeshProUGUI>();
             HighScoreDisplay = HighScoreDisplayGO.GetComponent<TextMeshProUGUI>();
+            HighScoreListNames = HighScoreListNamesGO.GetComponent<TextMeshProUGUI>();
+            HighScoreListValues = HighScoreListValuesGO.GetComponent<TextMeshProUGUI>();
 
             ResetCurrentScore();
             UpdateHighScorePanel();
@@ -35,10 +47,28 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
 
         private void UpdateHighScorePanel()
         {
-            if(HighScoreDisplay != null)
+            var highScores = HighScores.HighScores.OrderByDescending(x => x.Value).Take(3).ToArray();
+            if (!highScores.Any())
+                return;
+
+            if (HighScoreDisplay != null)
             {
-                var highScore = HighScores.HighScores.OrderByDescending(x => x.Value).FirstOrDefault();
+                var highScore = highScores.FirstOrDefault();
                 HighScoreDisplay.text = highScore?.Value.ToString() ?? "0";
+            }
+
+
+            if (HighScoreListNames != null)
+            {
+                var names = String.Join("\n", highScores.Select(x => x.Name));
+
+                HighScoreListNames.text = names;
+            }
+
+            if(HighScoreListValues != null)
+            {
+                var values = String.Join("\n", highScores.Select(x => x.Value));
+                HighScoreListValues.text = values;
             }
         }
 
