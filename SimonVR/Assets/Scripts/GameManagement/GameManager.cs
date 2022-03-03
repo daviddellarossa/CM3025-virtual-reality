@@ -20,6 +20,7 @@ namespace SimonVR.Assets.Scripts.GameManagement
         public ConsoleManager ConsoleManager { get; protected set; }
         public SoundManager SoundManager { get; protected set; }
         public ScoreManager ScoreManager { get; protected set; }
+        public HintManager HintManager { get; protected set; }
 
         public State CurrentState { get; protected set; }
         private SteamVR_Behaviour_Boolean steamVR_Behaviour_Boolean;
@@ -39,6 +40,7 @@ namespace SimonVR.Assets.Scripts.GameManagement
             ConsoleManager = console.GetComponent<ConsoleManager>();
             SoundManager = soundManager.GetComponent<SoundManager>();
             ScoreManager = GetComponent<ScoreManager>();
+            HintManager = GetComponent<HintManager>();
 
             var steamVR_Behaviour_Boolean = GetComponent<SteamVR_Behaviour_Boolean>();
             steamVR_Behaviour_Boolean.onPressUpEvent += SteamVR_Behaviour_Boolean_onPressUpEvent;

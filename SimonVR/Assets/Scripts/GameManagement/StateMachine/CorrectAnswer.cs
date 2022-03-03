@@ -13,7 +13,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
         public override event EventHandler ExitPlayStateEvent;
 
-        public virtual float ChangeStateDelay { get; set; } = 1;
+        public virtual float ChangeStateDelay { get; set; } = 3;
 
         public CorrectAnswer(Play parentState, int level) : base(parentState, level)
         {
@@ -22,6 +22,8 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public override void OnEnter()
         {
             base.OnEnter();
+            this.ParentState.GameManager.HintManager.DisplayText("Nice! Selection correct");
+
             this.ParentState.GameManager.ScoreManager.AddToScore(1);
             this.ParentState.GameManager.StartCoroutine(CoChangeState(new Playback(ParentState, ++Level)));
         }
