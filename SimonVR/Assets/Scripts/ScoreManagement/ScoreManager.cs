@@ -49,7 +49,12 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
         {
             var highScores = HighScores.HighScores.OrderByDescending(x => x.Value).Take(3).ToArray();
             if (!highScores.Any())
+            {
+                HighScoreListNames.text = String.Empty;
+                HighScoreListValues.text = String.Empty;
                 return;
+
+            }
 
             if (HighScoreDisplay != null)
             {
