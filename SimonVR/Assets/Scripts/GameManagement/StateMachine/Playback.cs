@@ -25,6 +25,8 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
             var sequence = ParentState.SequenceGenerator.GetSequence(Level);
 
             //ParentState.GameManager.ConsoleManager.SetActive(false);
+            this.ParentState.GameManager.HintManager.DisplayText("Wait for the sound sequence to complete");
+
 
             ParentState.GameManager.StartCoroutine(StartPlayIteration(sequence));
         }

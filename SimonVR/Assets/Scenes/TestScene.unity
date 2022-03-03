@@ -4817,8 +4817,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 7
+  m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4853,7 +4853,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -21.422108, y: 34.911316, z: -101.73631, w: 3.9696274}
+  m_margin: {x: -21.422108, y: 37.343693, z: -113.55587, w: 3.9696274}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6256,6 +6256,7 @@ GameObject:
   - component: {fileID: 1475582342}
   - component: {fileID: 1475582343}
   - component: {fileID: 1475582345}
+  - component: {fileID: 1475582346}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6345,6 +6346,20 @@ MonoBehaviour:
   HighScoreListNamesGO: {fileID: 1681636728}
   HighScoreListValuesGO: {fileID: 899393216}
   HighScoreListLength: 6
+--- !u!114 &1475582346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475582341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48c35da60aaa884d9f3089eb610d2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HintHeaderGO: {fileID: 23979024}
+  HintGO: {fileID: 1241893277}
 --- !u!1 &1477037010
 GameObject:
   m_ObjectHideFlags: 0

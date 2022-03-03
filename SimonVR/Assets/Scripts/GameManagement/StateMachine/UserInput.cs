@@ -22,6 +22,8 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public override void OnEnter()
         {
             base.OnEnter();
+            this.ParentState.GameManager.HintManager.DisplayText("Enter your sequence");
+
             ParentState.GameManager.ConsoleManager.ButtonDownEvent += ConsoleManager_ButtonDownEvent;
             ParentState.GameManager.ConsoleManager.ButtonUpEvent += ConsoleManager_ButtonUpEvent;
             ParentState.GameManager.ConsoleManager.SetActive(true);
