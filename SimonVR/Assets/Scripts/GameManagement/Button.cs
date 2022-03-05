@@ -1,17 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 namespace SimonVR.Assets.Scripts.GameManagement
 {
+    /// <summary>
+    /// A button on the user console.
+    /// </summary>
     public class Button : MonoBehaviour
     {
+        /// <summary>
+        /// Material for when the button is switched off.
+        /// </summary>
         [SerializeField]
         private Material materialOff;
+
+        /// <summary>
+        /// Material for when the button is switched off.
+        /// </summary>
         [SerializeField]
         private Material materialOn;
 
@@ -22,9 +28,20 @@ namespace SimonVR.Assets.Scripts.GameManagement
         public int ButtonId;
         public bool IsButtonActive;
 
+        /// <summary>
+        /// Notify observers when the Button is down.
+        /// </summary>
         public event Action<Button> ButtonDownEvent;
+
+        /// <summary>
+        /// Notify observers when the Button is up.
+        /// </summary>
         public event Action<Button> ButtonUpEvent;
 
+        /// <summary>
+        /// Set the button active/non active.
+        /// </summary>
+        /// <param name="isActive"></param>
         public void SetActive(bool isActive)
         {
             IsButtonActive = isActive;
@@ -33,11 +50,16 @@ namespace SimonVR.Assets.Scripts.GameManagement
 
         private void Awake()
         {
+            // Set references to components.
             renderer = GetComponentInChildren<Renderer>();
             interactable = GetComponent<Interactable>();
             audioSource = GetComponent<AudioSource>();
         }
-
+        
+        /// <summary>
+        /// Event handler for Button down event.
+        /// </summary>
+        /// <param name="fromHand">Hand controller generating the event.</param>
         public void OnButtonDown(Hand fromHand)
         {
             if (!IsButtonActive) return;
@@ -46,6 +68,10 @@ namespace SimonVR.Assets.Scripts.GameManagement
             ButtonDownEvent?.Invoke(this);
         }
 
+        /// <summary>
+        /// Event handler for Button up event.
+        /// </summary>
+        /// <param name="fromHand">Hand controller generating the event.</param>
         public void OnButtonUp(Hand fromHand)
         {
             if(!IsButtonActive) return;
@@ -53,12 +79,18 @@ namespace SimonVR.Assets.Scripts.GameManagement
             ButtonUpEvent?.Invoke(this);
         }
 
-
+        /// <summary>
+        /// Turn on the button.
+        /// </summary>
         public void TurnOn()
         {
             renderer.material = materialOn;
             audioSource.Play();
         }
+
+        /// <summary>
+        /// Turn off the button.
+        /// </summary>
         public void TurnOff()
         {
             renderer.material = materialOff;

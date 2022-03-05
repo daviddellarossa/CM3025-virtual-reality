@@ -8,17 +8,28 @@ using UnityEngine;
 
 namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
 {
+    /// <summary>
+    /// Sub-state for the Play state.
+    /// This state controls when the user inputted sequence is incorrect.
+    /// </summary>
     public class WrongAnswer : PlaySubState
     {
+        /// <inheritdoc/>
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
+
+        /// <inheritdoc/>
         public override event EventHandler ExitPlayStateEvent;
 
-        public virtual float ChangeStateDelay { get; set; } = 3;
-
+        /// <summary>
+        /// Constructor for the class.
+        /// </summary>
+        /// <param name="parentState">The parent Play state.</param>
+        /// <param name="level">The current difficulty level.</param>
         public WrongAnswer(Play parentState, int level) : base(parentState, level)
         {
         }
 
+        /// <inheritdoc/>
         public override void OnEnter()
         {
             base.OnEnter();
@@ -27,6 +38,10 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
             this.ParentState.GameManager.StartCoroutine(CoExitPlayState());
         }
 
+        /// <summary>
+        /// Coroutine that invokes an exit from the Play stae.
+        /// </summary>
+        /// <returns>Nothing.</returns>
         protected IEnumerator CoExitPlayState()
         {
             yield return new WaitForSeconds(ChangeStateDelay);
