@@ -22,7 +22,9 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         public override void OnEnter()
         {
             base.OnEnter();
-            var sequence = ParentState.SequenceGenerator.GetSequence(Level);
+
+            var sequenceLength = (int)Mathf.Sqrt(Level);
+            var sequence = ParentState.SequenceGenerator.GetSequence(sequenceLength);
 
             //ParentState.GameManager.ConsoleManager.SetActive(false);
             this.ParentState.GameManager.HintManager.DisplayText("Wait for the sound sequence to complete");
