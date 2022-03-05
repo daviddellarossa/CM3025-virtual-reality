@@ -24,6 +24,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         /// <param name="gameManager">Reference to the game manager.</param>
         public WaitForStart(GameManager gameManager) : base(gameManager)
         {
+            ChangeStateDelay = 2;
         }
 
         /// <inheritdoc/>

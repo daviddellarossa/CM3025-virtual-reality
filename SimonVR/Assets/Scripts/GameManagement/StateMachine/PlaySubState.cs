@@ -21,7 +21,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         /// <summary>
         /// Gets or sets the delay to wait before changing state.
         /// </summary>
-        public virtual float ChangeStateDelay { get; set; } = 0f;
+        public virtual float ChangeStateDelay { get; set; } = 2f;
 
         /// <summary>
         /// Parent state. Reference to Play state.

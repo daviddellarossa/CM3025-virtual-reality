@@ -1,4 +1,3 @@
-using Codice.CM.Common;
 using SimonVR.Assets.Scripts.AppManagement.StateMachine;
 using UnityEngine;
 
