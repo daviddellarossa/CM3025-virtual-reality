@@ -10,24 +10,63 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
 {
     public class ScoreManager : MonoBehaviour, IScoreManager
     {
+        /// <summary>
+        /// Gets or sets the current score.
+        /// </summary>
         public Score CurrentScore;
+
+        /// <summary>
+        /// Reference to the high score recorder.
+        /// </summary>
         public HighScoreRecorder HighScores;
 
+        /// <summary>
+        /// Reference to the High score display game object.
+        /// </summary>
         [SerializeField]
         private GameObject HighScoreDisplayGO;
+
+        /// <summary>
+        /// Reference to the Score display game object.
+        /// </summary>
         [SerializeField]
         private GameObject ScoreDisplayGO;
 
+        /// <summary>
+        /// Reference to the High score list of names' game object.
+        /// </summary>
         [SerializeField]
         private GameObject HighScoreListNamesGO;
+
+        /// <summary>
+        /// Reference to the High score list of values' game object.
+        /// </summary>
         [SerializeField]
         private GameObject HighScoreListValuesGO;
 
+        /// <summary>
+        /// Reference to the TextMeshPro controller for score.
+        /// </summary>
         private TextMeshProUGUI ScoreDisplay;
+
+        /// <summary>
+        /// Reference to the TextMeshPro controller for high score.
+        /// </summary>
         private TextMeshProUGUI HighScoreDisplay;
+
+        /// <summary>
+        /// Reference to the TextMeshPro controller for high score list of names.
+        /// </summary>
         private TextMeshProUGUI HighScoreListNames;
+
+        /// <summary>
+        /// Reference to the TextMeshPro controller for high score list of values.
+        /// </summary>
         private TextMeshProUGUI HighScoreListValues;
 
+        /// <summary>
+        /// Length of the high score list
+        /// </summary>
         [SerializeField] 
         [Range(1, 10)]
         private int HighScoreListLength = 5;
@@ -45,6 +84,9 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
             //Valve.VR.SteamVR.instance.overlay.ShowKeyboard(0, 0, "Description", 256, "", true);
         }
 
+        /// <summary>
+        /// Update the high score panel.
+        /// </summary>
         private void UpdateHighScorePanel()
         {
             var highScores = HighScores.HighScores.OrderByDescending(x => x.Value).Take(3).ToArray();
@@ -53,7 +95,6 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
                 HighScoreListNames.text = String.Empty;
                 HighScoreListValues.text = String.Empty;
                 return;
-
             }
 
             if (HighScoreDisplay != null)
@@ -77,6 +118,10 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
             }
         }
 
+        /// <summary>
+        /// Update the score panel.
+        /// </summary>
+        /// <param name="score">The score to display on the panel.</param>
         private void UpdateScorePanel(Score score)
         {
             if (ScoreDisplay != null)
@@ -85,6 +130,7 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
             }
         }
 
+        /// <inheritdoc/>
         public void AddToHighScore()
         {
             if(CurrentScore.Value == 0)
@@ -97,6 +143,7 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
             UpdateHighScorePanel();
         }
 
+        /// <inheritdoc/>
         public void AddToScore(int score)
         {
             CurrentScore.Value += score;
@@ -104,12 +151,14 @@ namespace SimonVR.Assets.Scripts.ScoreManagement
             UpdateScorePanel(CurrentScore);
         }
 
+        /// <inheritdoc/>
         public void ResetCurrentScore()
         {
             CurrentScore = new Score();
             UpdateScorePanel(CurrentScore);
         }
 
+        /// <inheritdoc/>
         public void ResetHighScore()
         {
             HighScores.HighScores.Clear();
