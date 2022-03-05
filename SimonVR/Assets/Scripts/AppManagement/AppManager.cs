@@ -4,19 +4,28 @@ using UnityEngine;
 
 namespace SimonVR.Assets.Scripts.AppManagement
 {
+    /// <summary>
+    /// Manage the overall lifecycle of the game.
+    /// </summary>
     public class AppManager : MonoBehaviour
     {
+        /// <summary>
+        /// Gets or sets the current state for AppManager.
+        /// </summary>
         public State CurrentState { get; private set; }
 
-        // Start is called before the first frame update
         void Start()
         {
             ChangeStateRequestEventHandler(this, new MenuState(this));
         }
 
+        /// <summary>
+        /// EventHandler for a request to change state.
+        /// </summary>
+        /// <param name="sender">The state sending the request.</param>
+        /// <param name="e">The new state.</param>
         protected void ChangeStateRequestEventHandler(object sender, State e)
         {
-            //Debug.Log($"Changing state from {sender} to {e}");
             if (CurrentState != null)
             {
                 CurrentState.ChangeStateRequestEvent -= ChangeStateRequestEventHandler;

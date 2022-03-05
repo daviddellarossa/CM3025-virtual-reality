@@ -21,7 +21,7 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
         /// <summary>
         /// Constructor for the class.
         /// </summary>
-        /// <param name="gameManager"></param>
+        /// <param name="gameManager">The game manager.</param>
         public State(GameManager gameManager)
         {
             GameManager = gameManager;
