@@ -1,4 +1,5 @@
 ﻿using SimonVR.Assets.Scripts.GameManagement.StateMachine;
+using SimonVR.Assets.Scripts.ScoreManagement;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,54 @@ using Valve.VR;
 
 namespace SimonVR.Assets.Scripts.GameManagement
 {
+    /// <summary>
+    /// Orchestrator of the game.
+    /// </summary>
     public class GameManager : MonoBehaviour
     {
+        /// <summary>
+        /// A reference to the console game object.
+        /// </summary>
         [SerializeField]
         private GameObject console;
+
+        /// <summary>
+        /// A reference to the Display panels game object.
+        /// </summary>
         [SerializeField]
         private GameObject displayPanels;
+
+        /// <summary>
+        /// A reference to the sound manager game object.
+        /// </summary>
         [SerializeField]
         private GameObject soundManager;
 
+        /// <summary>
+        /// A reference to the PanelsManager script
+        /// </summary>
         public PanelsManager PanelsManager { get; protected set; }
-        public ConsoleManager ConsoleManager { get; protected set; }
-        public SoundManager SoundManager { get; protected set; }
 
+        /// <summary>
+        /// A reference to the ConsoleManager script.
+        /// </summary>
+        public ConsoleManager ConsoleManager { get; protected set; }
+
+        /// <summary>
+        /// A reference to the ScoreManager script.
+        /// </summary>
+        public ScoreManager ScoreManager { get; protected set; }
+
+        /// <summary>
+        /// A reference to the HintManager script.
+        /// </summary>
+        public HintManager HintManager { get; protected set; }
+
+        /// <summary>
+        /// The current state the GameManager is in.
+        /// </summary>
         public State CurrentState { get; protected set; }
+
         private SteamVR_Behaviour_Boolean steamVR_Behaviour_Boolean;
         private IDictionary<SourceActionDelegateKey, Action<SourceActionDelegateKey>> sourceActionDelegates = new Dictionary<SourceActionDelegateKey, Action<SourceActionDelegateKey>>()
         {
@@ -33,15 +68,18 @@ namespace SimonVR.Assets.Scripts.GameManagement
 
         void Start()
         {
+            // Initialize the managers
             PanelsManager = displayPanels.GetComponent<PanelsManager>();
             ConsoleManager = console.GetComponent<ConsoleManager>();
-            SoundManager = soundManager.GetComponent<SoundManager>();
+            ScoreManager = GetComponent<ScoreManager>();
+            HintManager = GetComponent<HintManager>();
 
             var steamVR_Behaviour_Boolean = GetComponent<SteamVR_Behaviour_Boolean>();
             steamVR_Behaviour_Boolean.onPressUpEvent += SteamVR_Behaviour_Boolean_onPressUpEvent;
 
             ChangeStateRequestEventHandler(this, new WaitForStart(this));
         }
+
         private void SteamVR_Behaviour_Boolean_onPressUpEvent(SteamVR_Behaviour_Boolean fromAction, SteamVR_Input_Sources fromSource)
         {
             var action = fromAction.booleanAction.fullPath;
@@ -56,6 +94,11 @@ namespace SimonVR.Assets.Scripts.GameManagement
             }
         }
 
+        /// <summary>
+        /// Handler for a request to change current state.
+        /// </summary>
+        /// <param name="sender">The sender of the request.</param>
+        /// <param name="e">The new state.</param>
         protected void ChangeStateRequestEventHandler(object sender, State e)
         {
             //Debug.Log($"Changing state from {sender} to {e}");
@@ -69,66 +112,13 @@ namespace SimonVR.Assets.Scripts.GameManagement
             CurrentState.OnEnter();
         }
 
+        /// <summary>
+        /// Handler for an event triggered when the player hits the right trigger.
+        /// </summary>
+        /// <param name="key"></param>
         protected void OnRightTriggerPressed(SourceActionDelegateKey key)
         {
             CurrentState.OnRightTriggerPressed();
-        }
-    }
-
-    public class SourceActionDelegateKey : IEquatable<SourceActionDelegateKey>
-    {
-        public SteamVR_Input_Sources Source { get; protected set; }
-        public string Action { get; protected set; }
-
-
-        public SourceActionDelegateKey(SteamVR_Input_Sources source, string action)
-        {
-            Source = source;
-            Action = action;
-        }
-
-
-        public static bool operator ==(SourceActionDelegateKey obj1, SourceActionDelegateKey obj2)
-        {
-            if (ReferenceEquals(obj1, obj2))
-            {
-                return true;
-            }
-            if (ReferenceEquals(obj1, null))
-            {
-                return false;
-            }
-            if (ReferenceEquals(obj2, null))
-            {
-                return false;
-            }
-
-            return obj1.Equals(obj2);
-        }
-
-        public static bool operator !=(SourceActionDelegateKey obj1, SourceActionDelegateKey obj2) => !(obj1 == obj2);
-
-        public bool Equals(SourceActionDelegateKey other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return (Source == other.Source && Action == other.Action);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((SourceActionDelegateKey)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((int)Source) ^ Action.GetHashCode();
-            }
         }
     }
 }

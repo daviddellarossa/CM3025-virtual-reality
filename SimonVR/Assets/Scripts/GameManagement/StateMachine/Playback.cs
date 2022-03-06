@@ -8,27 +8,45 @@ using UnityEngine;
 
 namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
 {
+    /// <summary>
+    /// Sub-state for the Play state.
+    /// This state controls when the sequence is played back.
+    /// </summary>
     public class Playback : PlaySubState
     {
+        /// <inheritdoc/>
         public override event EventHandler<PlaySubState> ChangeStateRequestEvent;
+        
+        /// <inheritdoc/>
         public override event EventHandler ExitPlayStateEvent;
 
-        public virtual float ChangeStateDelay { get; set; } = 0f;
-
+        /// <summary>
+        /// Constructor for the class.
+        /// </summary>
+        /// <param name="parentState">The parent Play state.</param>
+        /// <param name="level">The current difficulty level.</param>
         public Playback(Play parentState, int level) : base(parentState, level)
         {
         }
 
+        /// <inheritdoc/>
         public override void OnEnter()
         {
             base.OnEnter();
-            var sequence = ParentState.SequenceGenerator.GetSequence(Level);
 
-            //ParentState.GameManager.ConsoleManager.SetActive(false);
+            var sequenceLength = (int)Mathf.Sqrt(Level);
+            var sequence = ParentState.SequenceGenerator.GetSequence(sequenceLength);
+
+            this.ParentState.GameManager.HintManager.DisplayText("Wait for the sound sequence to complete");
 
             ParentState.GameManager.StartCoroutine(StartPlayIteration(sequence));
         }
 
+        /// <summary>
+        /// Coroutine that executes the sequence.
+        /// </summary>
+        /// <param name="sequence">Sequence to execute.</param>
+        /// <returns>Nothing.</returns>
         private IEnumerator StartPlayIteration(Sequence sequence)
         {
             Debug.Log("StartPlayIteration coroutine started");
@@ -56,6 +74,11 @@ namespace SimonVR.Assets.Scripts.GameManagement.StateMachine
            this.ParentState.GameManager.StartCoroutine(CoChangeState(new UserInput(this.ParentState, Level, sequence)));
         }
 
+        /// <summary>
+        /// Coroutine that manages a change in state.
+        /// </summary>
+        /// <param name="state">New state.</param>
+        /// <returns></returns>
         protected IEnumerator CoChangeState(PlaySubState state)
         {
             if(ChangeStateDelay > 0)
